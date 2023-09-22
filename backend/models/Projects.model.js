@@ -1,19 +1,22 @@
+const { Int32 } = require('mongodb')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const projects = new Schema(
 {
 
-p_id:{type: String,required:true,unique:true},
-organisation:{type: String,required:true},
-desc:{type: String,required:true},
-type:{type: String,required:true},
-status:{type: String,required:true},
-amount:{type: String,required:true},
-duedate:{type: String,required:true},
-noofteamsregistered:{type: String,required:true},
-    
-
-},{collection:'projects'}
+pid:{type: String},
+organisation:{type: String},
+description:{type: String},
+type:{type: String},
+status:{type: String},
+amount:{type: Number},
+duedate:{type: String},
+noofTeamsRegistered:{type: String},
+teamId:{type: Array},  
+module_1_date:{type:String},
+module_2_date:{type:String},  
+module_3_date:{type:String},
+},{collection:'Project'}
 )
-const Project=mongoose.model('projects',projects)
+const Project=mongoose.model('Project',projects)
 module.exports=Project
