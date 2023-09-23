@@ -111,13 +111,14 @@ router.post('/enroll',async(req,res)=>{
             projectId:req.body.pid
         });
         await newTeam.save().then(
-        res.send("Success")
+           await Project.updateOne({
+            projectId:req.body.pid
+           },{
+            $push:{teamId:result}
+           }).then(res.send("Success"))
         ).catch(error=>{
             console.error("error saving document");
         })
-
-
-        // console.log(tea[0]) 
     }     
     }
     else{
